@@ -1,6 +1,12 @@
 pipeline {
   agent any
   stages {
+    stage('Checkout') {
+      steps {
+        sh 'git checkout scm'
+      }
+    }
+    
     stage('Build') {
       steps {
         sh 'script scripts/build.sh'
@@ -15,8 +21,7 @@ pipeline {
 
     stage('Build docker image') {
       steps {
-        sh '''unset DOCKER_HOST
-docker build  -t mybuildimage .'''
+        sh '''docker build  -t mybuildimage .'''
       }
     }
 
