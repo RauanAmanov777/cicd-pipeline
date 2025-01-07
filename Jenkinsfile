@@ -19,5 +19,21 @@ pipeline {
       }
     }
 
+    stage('Docker image push') {
+      environment {
+        registry = 'rauanamanov077/test-jenkins-pipeline'
+        registryCredential = 'dockerhub_id'
+      }
+      steps {
+        script {
+          docker.withRegistry(registry, registryCredential){
+            app.push("${env.BUILD_NUMBER}")
+            app.push("latest")
+          }
+        }
+
+      }
+    }
+
   }
 }
