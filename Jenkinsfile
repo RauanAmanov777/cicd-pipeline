@@ -15,7 +15,7 @@ pipeline {
 
     stage('Build docker image') {
       steps {
-        sh 'docker buildx build  --tag mybuildimage:latest'
+        sh 'docker build  -t mybuildimage .'
       }
     }
 
