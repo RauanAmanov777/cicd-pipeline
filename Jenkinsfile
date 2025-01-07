@@ -15,7 +15,8 @@ pipeline {
 
     stage('Build docker image') {
       steps {
-        sh 'docker build  -t mybuildimage .'
+        sh '''unset DOCKER_HOST
+docker build  -t mybuildimage .'''
       }
     }
 
