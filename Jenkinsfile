@@ -15,7 +15,7 @@ pipeline {
 
     stage('Build docker image') {
       steps {
-        sh 'docker build -t mybuildimage'
+        sh 'docker build -t mybuildimage:latest'
       }
     }
 
